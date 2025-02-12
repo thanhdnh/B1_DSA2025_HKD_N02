@@ -25,7 +25,18 @@
     {
         Console.Clear();
 
-        int a = 10, b = 20;
+        int[] a = { 1, 2, 3 }, b = { 4, 5, 6 };
+
+        Timing timecounter = new Timing();
+
+        int ntimes = 10000000;
+        timecounter.startTime();
+        for (int i = 0; i < ntimes; i++)
+            Sum<int[]>(a, b);
+        timecounter.StopTime();
+        Console.WriteLine("Duration: {0}ms", timecounter.Result().TotalMilliseconds/ntimes);
+
+        /*int a = 10, b = 20;
         Console.WriteLine("{0}+{1}={2}", a, b, Sum<int>(a, b));
 
         string x = "Hello", y = "World";
@@ -33,7 +44,7 @@
 
         int[] arr1 = { 1, 2, 3 }, arr2 = { 4, 5, 6 };
         Console.WriteLine("[{0}]+[{1}]=[{2}]", string.Join(",", arr1), 
-                string.Join(",", arr2), string.Join(",", Sum<int[]>(arr1, arr2)));
+                string.Join(",", arr2), string.Join(",", Sum<int[]>(arr1, arr2)));*/
         
         //int[] a = { 1, 2, 3 };
         //Console.WriteLine(a.GetType()==typeof(int[]));
